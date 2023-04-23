@@ -4,7 +4,7 @@
         <container type="docker">broadinstitute/gatk</container>
     </requirements>
 <command>
-docker run -v /Volumes/T7/galaxy/database/objects:/galaxy_objects -w /data galaxy_gatk:4.1.3.0 HaplotypeCaller -R /Volumes/T7/galaxy_objects/6/a/b/dataset_6abe9dd8-57a6-4ad2-bd4b-bd914856437c.dat -I '$input_bam' -O '$output_vcf' --dbsnp '$dbsnp' --emit-ref-confidence '$emit_ref_confidence' --max-alternate-alleles '$max_alternate_alleles' --min-base-quality-score '$min_base_quality_score'
+docker run -v `pwd`:/data -v `pwd`/database/objects:/galaxy_objects galaxy_gatk:4.1.3.0 HaplotypeCaller -R '$reference_fasta' -I '$input_bam' -O '$output_vcf' --dbsnp '$dbsnp' --emit-ref-confidence '$emit_ref_confidence' --max-alternate-alleles '$max_alternate_alleles' --min-base-quality-score '$min_base_quality_score'
 </command>
     <inputs>
         <param name="reference_fasta" type="data" format="fasta" label="Reference genome" help="Select the reference genome" />
